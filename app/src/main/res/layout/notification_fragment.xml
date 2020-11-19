@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="isLoading"
+            type="boolean" />
+        <variable
+            name="notificationSettingModel"
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.notification.NotificationSettingViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_light_background"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/notification_detail"
+            app:notification="@{notificationSettingModel.notification}"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/loading_comments_tv"
+                android:text="@string/loading"
+                app:visibleGone="@{isLoading}"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/comments_list_wrapper">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/notification_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="LinearLayoutManager"
+                    app:visibleGone="@{!isLoading}"/>
+            </FrameLayout>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

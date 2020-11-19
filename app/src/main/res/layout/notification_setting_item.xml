@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="notification"
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.notification.model.Notification"/>
+        <variable name="callback"
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.notification.activity.NotificationClickCallback"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:padding="8dp">
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{notification.title}"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{notification.message}"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{notification.text}"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:setNotify="@{notification.notify}"/>
+            <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> callback.onClick(notification)}"
+                app:setNotifyButton="@{notification.notify}"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

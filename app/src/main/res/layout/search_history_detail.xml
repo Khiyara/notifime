@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="searchHistory"
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.search.model.SearchHistory"/>
+        <variable name="callback"
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.search.activity.SearchHistoryClickCallback"/>
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:onClick="@{() ->  callback.onClick(searchHistory)}"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:cardUseCompatPadding="true">
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{searchHistory.query}"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

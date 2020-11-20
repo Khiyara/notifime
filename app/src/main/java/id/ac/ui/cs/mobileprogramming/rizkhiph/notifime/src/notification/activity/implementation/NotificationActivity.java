@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.activity.ComponentActivity;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
@@ -94,5 +95,10 @@ public class NotificationActivity extends BaseActivity implements NotificationIn
 
     public NotificationService getNotificationService() {
         return notificationService;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.defaultBackPressed();
     }
 }

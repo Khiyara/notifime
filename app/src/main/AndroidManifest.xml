@@ -7,16 +7,15 @@
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:name=".src.App"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_only"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
         <activity android:name=".common.BaseActivity">
-
         </activity>
         <activity
             android:name=".src.main.activity.implementation.MainActivity"
-            android:label="@string/title_activity_welcome"
+            android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize|stateVisible" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

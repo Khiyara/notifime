@@ -11,11 +11,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -156,6 +159,8 @@ public class SearchActivity extends BaseActivity implements SearchControllerList
     @Override
     public void onGetSearch(String text) {
         Log.d(TAG, "[+] On Get Search List");
+        findViewById(R.id.detail).setVisibility(View.GONE);
+        findViewById(R.id.list).setVisibility(View.VISIBLE);
         try {
             JSONParser parse = new JSONParser();
             JSONObject obj = (JSONObject) parse.parse(text);
@@ -179,6 +184,8 @@ public class SearchActivity extends BaseActivity implements SearchControllerList
 
     @Override
     public void onGetDetail(String text) {
+        findViewById(R.id.list).setVisibility(View.GONE);
+        findViewById(R.id.detail).setVisibility(View.VISIBLE);
         try {
             JSONParser parse = new JSONParser();
             JSONObject result = (JSONObject) parse.parse(text);
@@ -194,10 +201,12 @@ public class SearchActivity extends BaseActivity implements SearchControllerList
             TextView textView = (TextView) this.findViewById(R.id.mal_id_state);
             textView.setText(data);
             String views = this.formatString((String) result.toString());
-            ArrayList<String> detail = new ArrayList<>();
-            detail.add(views);
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, detail);
-            ((ListView) this.findViewById(R.id.textView_fetched_results)).setAdapter(adapter);
+            ((TextView) findViewById(R.id.detail_text)).setText(views);
+            Picasso.get().load((String) result.get("image_url")).into((ImageView) findViewById(R.id.thumbnail));
+//            ArrayList<String> detail = new ArrayList<>();
+//            detail.add(views);
+//            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, detail);
+//            ((ListView) this.findViewById(R.id.textView_fetched_results)).setAdapter(adapter);
 
         } catch (Exception e) {
             Log.e(TAG, "[-] Something went wrong");

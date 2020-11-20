@@ -119,6 +119,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 .show();
     }
 
+    public void defaultBackPressed() {
+        super.onBackPressed();
+    }
+
     //    public DrawerLayout drawerLayout;
 //    public ListView drawerList;
 //    public String[] layers;

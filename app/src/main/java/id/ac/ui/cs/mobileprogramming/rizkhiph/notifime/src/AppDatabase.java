@@ -105,7 +105,7 @@ public abstract class AppDatabase extends RoomDatabase {
     static final Migration MIGRATION_1_4 = new Migration(1, 4) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
-            database.execSQL("CREATE TABLE searchhistory(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            database.execSQL("CREATE TABLE search_history(id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "search_query TEXT NOT NULL) ");
         }
     };

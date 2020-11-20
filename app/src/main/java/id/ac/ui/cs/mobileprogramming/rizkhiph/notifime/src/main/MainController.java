@@ -10,7 +10,7 @@ import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.main.activity.MainCon
 @SuppressLint("NewApi")
 public class MainController implements View.OnClickListener {
 
-    private final String TAG = "Welcome controller";
+    private final String TAG = "Main controller";
 
     private MainControllerListener listener;
 

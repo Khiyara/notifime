@@ -3,6 +3,7 @@ package id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.content.activity.imp
 import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.activity.ComponentActivity;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -82,5 +83,10 @@ public class ContentListActivity extends BaseActivity implements ContentListList
                 .replace(twoPane ? R.id.item_detail_container : R.id.fragment_container,
                         contentFragment)
                 .commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.defaultBackPressed();
     }
 }

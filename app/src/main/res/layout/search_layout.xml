@@ -24,7 +24,7 @@
         android:focusableInTouchMode="true" >
         <TextView
             android:id="@+id/title_text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search_layout_title"
             android:hint="@string/text_placeholder">
@@ -82,44 +82,43 @@
                 android:layout_gravity="right"
                 android:text="@string/search_button_placeholder" />
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""/>
 
             <ListView
                 android:id="@+id/textView_fetched_results"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="20sp"
                 android:linksClickable="true"/>
         </LinearLayout>
-
-        <LinearLayout
+        <ScrollView
             android:id="@+id/detail"
+            android:visibility="gone"
             android:layout_width="match_parent"
-            android:visibility="visible"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:id="@+id/detail_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </ScrollView>
 
         <TextView
             android:id="@+id/mal_id_state"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""

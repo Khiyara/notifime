@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="notification"
-            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.notification.model.Notification"/>
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.notification.model.Notification"/>
         <variable name="callback"
-            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.notification.activity.NotificationClickCallback"/>
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.notification.activity.NotificationClickCallback"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"

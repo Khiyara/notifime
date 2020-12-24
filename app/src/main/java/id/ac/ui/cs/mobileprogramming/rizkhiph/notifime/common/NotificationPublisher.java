@@ -26,13 +26,5 @@ public class NotificationPublisher extends BroadcastReceiver {
 
     }
 
-//    public static void cancelNotification(final Context context, Intent intent, final int notificationId) {
-//        Log.i(TAG, "[+] On Cancel Notification");
-//        NotificationManager notificationManager = (NotificationManager)
-//                (context.getApplicationContext()).getSystemService(Context.NOTIFICATION_SERVICE);
-//        notificationManager.cancel(notificationId);
-//
-//        Log.i(TAG, "[+] Cancel notification with id " + notificationId);
-//    }
 // 　　しんだあああ
 }

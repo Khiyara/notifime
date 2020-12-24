@@ -8,7 +8,7 @@
             type="boolean" />
         <variable
             name="notificationSettingModel"
-            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.notification.NotificationSettingViewModel"/>
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.notification.NotificationSettingViewModel"/>
     </data>
 
     <LinearLayout

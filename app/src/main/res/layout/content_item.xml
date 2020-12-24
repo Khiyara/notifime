@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="content"
-            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.content.model.Content"/>
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.content.model.Content"/>
         <variable name="callback"
-            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.content.activity.ContentClickCallback"/>
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.content.activity.ContentClickCallback"/>
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

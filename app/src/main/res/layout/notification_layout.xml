@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
         android:orientation="vertical"
-        tools:context=".src.notification.activity.implementation.NotificationActivity"
+        tools:context=".ui.notification.activity.implementation.NotificationActivity"
         android:id="@+id/fragment_container">
 
     </androidx.fragment.app.FragmentContainerView>

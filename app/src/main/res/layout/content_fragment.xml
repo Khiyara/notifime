@@ -10,7 +10,7 @@
 
         <variable
             name="contentViewModel"
-            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.content.ContentViewModel"/>
+            type="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.content.ContentViewModel"/>
     </data>
 
     <LinearLayout

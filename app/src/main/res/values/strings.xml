@@ -23,4 +23,10 @@
     <string name="exit_confirmation_yes">Yes</string>
     <string name="exit_confirmation_bo">No</string>
     <string name="text_placeholder" translatable="false">Show</string>
+    <string name="popup_internet_title">Internet Connection</string>
+    <string name="popup_internet_message">You are offline, turn on WiFi?</string>
+    <string name="popup_internet_yes">Yes</string>
+    <string name="popup_internet_no">No</string>
+    <string name="popup_airplane_title">Airplane</string>
+    <string name="popup_airplane_message">You are on airplane mode, turn off airplane mode?</string>
 </resources>

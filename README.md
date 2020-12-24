@@ -2,6 +2,6 @@
 
 ## Reminder show application
 
-## TKTPL Mid Project
+## TKTPL Last Project
 
 Rizkhi Pramudya Hastiputra 1706039660 TKTPL - A

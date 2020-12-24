@@ -24,7 +24,7 @@
         android:orientation="horizontal"
         android:showDividers="middle"
         tools:viewBindingIgnore="true"
-        tools:context=".src.notification.activity.implementation.NotificationActivity">
+        tools:context=".ui.notification.activity.implementation.NotificationActivity">
 
         <androidx.fragment.app.FragmentContainerView
             android:layout_width="200dp"
@@ -32,7 +32,7 @@
             android:orientation="horizontal"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            tools:context=".src.notification.activity.implementation.NotificationActivity"
+            tools:context=".ui.notification.activity.implementation.NotificationActivity"
             android:id="@+id/fragment_container">
 
         </androidx.fragment.app.FragmentContainerView>

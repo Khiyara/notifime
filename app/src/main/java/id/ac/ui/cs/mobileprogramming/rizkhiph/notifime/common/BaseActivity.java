@@ -20,10 +20,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.R;
-import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.content.activity.implementation.ContentListActivity;
-import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.main.activity.implementation.MainActivity;
-import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.notification.activity.implementation.NotificationActivity;
-import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.search.activity.implementation.SearchActivity;
+import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.content.activity.implementation.ContentListActivity;
+import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.main.activity.implementation.MainActivity;
+import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.notification.activity.implementation.NotificationActivity;
+import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.search.activity.implementation.SearchActivity;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "Base Activity";

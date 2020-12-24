@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.search.SearchView
+    <id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.search.SearchView
         android:id="@+id/search"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -125,7 +125,7 @@
             >
         </TextView>
 
-    </id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.search.SearchView>
+    </id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.search.SearchView>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"

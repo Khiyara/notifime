@@ -54,7 +54,7 @@
         android:orientation="horizontal"
         android:showDividers="middle"
         tools:viewBindingIgnore="true"
-        tools:context=".src.content.activity.implementation.ContentListActivity">
+        tools:context=".ui.content.activity.implementation.ContentListActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="200dp"
@@ -62,7 +62,7 @@
         android:orientation="horizontal"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        tools:context=".src.content.activity.implementation.ContentListActivity"
+        tools:context=".ui.content.activity.implementation.ContentListActivity"
         android:id="@+id/fragment_container">
 
     </androidx.fragment.app.FragmentContainerView>

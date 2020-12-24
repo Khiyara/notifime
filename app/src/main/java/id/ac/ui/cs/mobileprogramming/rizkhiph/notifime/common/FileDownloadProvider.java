@@ -10,14 +10,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,12 +28,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class FileDownloadProvider extends ContentProvider {
+public class FileDownloadProvider extends FileProvider {
     private static final String TAG = "File Download Provider";
     static final String PROVIDER_NAME = "id.ac.ui.cs.mobileprogramming.rizkhiph.notifime";
     static final String BASE_PATH =  "/images";
     public static final String URL = "content://" + PROVIDER_NAME + BASE_PATH;
     public static final Uri CONTENT_URI = Uri.parse(URL);
+    public static final String EXTERNAL_STORAGE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/notifime";
 
     @Override
     public boolean onCreate() {
@@ -109,12 +113,6 @@ public class FileDownloadProvider extends ContentProvider {
         Log.i(TAG, "[+] Creating Request to API Server to download thumbnail");
         RequestTask task = (RequestTask) new RequestTask(this, url, context, uri, key)
                 .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-//        InputStream is = download(url);
-
-//        Bitmap bitmap = BitmapFactory.decodeStream(is);
-//        String basePath = uri.getPath();
-//        Log.d(TAG, "[+] Bitmap " + bitmap.toString());
-//        saveBitmap(context, uri, basePath, key, bitmap, false);
     }
 
     private InputStream download(String url) throws MalformedURLException,
@@ -160,9 +158,6 @@ public class FileDownloadProvider extends ContentProvider {
         }
         return false;
     }
-    protected static void saveBitmap(String basePath, Bitmap value, boolean updateDatabase) {
-
-    }
 
     protected static void saveBitmap(Context context, Uri contentUri,
                                      String basePath, int key, Bitmap value, boolean updateDatabase) {
@@ -185,13 +180,13 @@ public class FileDownloadProvider extends ContentProvider {
                 Log.d(TAG,
                         "[+] Image (" + value.getWidth() + "x" + value.getHeight()
                                 + "pixels) saved to " + uri.toString());
-
+                outStream = new FileOutputStream(EXTERNAL_STORAGE + "/" + key + ".bmp");
+                saveToStream(value, outStream,
+                        Bitmap.CompressFormat.PNG);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Log.e(TAG, "[-] Could not save image to " + uri.toString());
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.e(TAG, "[-] Could not save image to " + uri.toString());
             }
         } finally {
             if (updateDatabase) {

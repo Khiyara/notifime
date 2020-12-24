@@ -30,7 +30,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginTop="60dp"
-        tools:context=".src.content.activity.implementation.ContentListActivity"
+        tools:context=".ui.content.activity.implementation.ContentListActivity"
         android:id="@+id/fragment_container">
 
     </androidx.fragment.app.FragmentContainerView>

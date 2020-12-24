@@ -18,4 +18,10 @@
     <string name="exit_confirmation">Mau keluar bro?</string>
     <string name="exit_confirmation_yes">Iya</string>
     <string name="exit_confirmation_bo">Tidak</string>
+    <string name="popup_internet_title">Koneksi Internet</string>
+    <string name="popup_internet_message">Anda sedang offline, nyalakan WiFi?</string>
+    <string name="popup_internet_yes">Iya</string>
+    <string name="popup_internet_no">Tidak</string>
+    <string name="popup_airplane_title">Airplane</string>
+    <string name="popup_airplane_message">Anda sedang dalam mode pesawat, matikan mode pesawat?</string>
 </resources>

@@ -2,52 +2,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
-        android:name=".src.App"
+        android:name=".App"
         android:icon="@drawable/logo_only"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
         <activity android:name=".common.BaseActivity">
         </activity>
-        <activity
-            android:name=".src.main.activity.implementation.MainActivity"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="adjustResize|stateVisible" >
+        <activity android:name=".ui.splashscreen.activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.src.search.activity.implementation.SearchActivity"
+            android:name=".ui.main.activity.implementation.MainActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".ui.search.activity.implementation.SearchActivity"
             android:label="SearchActivity" >
         </activity>
         <activity
-            android:name=".src.content.activity.implementation.ContentListActivity"
+            android:name=".ui.content.activity.implementation.ContentListActivity"
             android:theme="@style/MaterialComponents"
             android:label="ContentListActivity" >
         </activity>
         <activity
-            android:name=".src.notification.activity.implementation.NotificationActivity"
+            android:name=".ui.notification.activity.implementation.NotificationActivity"
             android:label="NotificationActivity"
             android:theme="@style/MaterialComponents" >
         </activity>
         <activity
-            android:name=".src.search.activity.implementation.HistoryActivity"
+            android:name=".ui.search.activity.implementation.HistoryActivity"
             android:label="HistoryActivity"
             android:theme="@style/MaterialComponents" >
         </activity>
 
 
         <receiver android:name="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.common.NotificationPublisher" />
-        <service android:name=".src.notification.NotificationService"
+        <service android:name=".ui.notification.NotificationService"
             tools:ignore="Instantiatable" />
         <service android:name=".common.RequestApi"/>
-        <service android:name=".src.search.SearchService"
+        <service android:name=".ui.search.SearchService"
             tools:ignore="Instantiatable" />
         <provider
             android:authorities="id.ac.ui.cs.mobileprogramming.rizkhiph.notifime"

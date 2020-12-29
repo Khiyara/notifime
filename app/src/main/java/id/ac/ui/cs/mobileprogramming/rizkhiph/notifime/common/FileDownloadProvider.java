@@ -1,5 +1,7 @@
 package id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.common;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -10,12 +12,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
@@ -27,6 +32,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.R;
+import id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.main.activity.implementation.MainActivity;
 
 public class FileDownloadProvider extends FileProvider {
     private static final String TAG = "File Download Provider";
@@ -202,10 +210,13 @@ public class FileDownloadProvider extends FileProvider {
 
     private static class RequestTask extends AsyncTask<Void, Void, Void> {
         FileDownloadProvider provider;
+        NotificationManager mNotifyManager;
+        NotificationCompat.Builder mBuilder;
         String url;
         Context context;
         Uri uri;
         int key;
+        int id = 8765;
 
         private final String TAG = "Request Task";
 
@@ -218,19 +229,49 @@ public class FileDownloadProvider extends FileProvider {
         }
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            System.out.println("Creating Notification manager on download");
+            String channelId = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                channelId = createNotificationChannel(context);
+            }
+            mNotifyManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            mBuilder = new NotificationCompat.Builder(context, channelId);
+            mBuilder.setContentTitle("File Download")
+                    .setContentText("Download in progress")
+                    .setSmallIcon(R.drawable.logo_only);
+        }
+
+        @Override
         protected Void doInBackground(Void... voids) {
             try {
                 Log.i(TAG, "[+] Forging GET Request to " + url);
                 URL newUrl = new URL(url);
                 HttpURLConnection con = (HttpURLConnection) newUrl.openConnection();
 
+                int fileLength = con.getContentLength();
                 InputStream output = con.getInputStream();
+                byte data[] = new byte[4096];
+                long total = 0;
+                int count;
+                while ((count = output.read(data)) != -1) {
+                    // allow canceling with back button
+                    if (isCancelled()) {
+                        output.close();
+                        return null;
+                    }
+                    total += count;
+                    System.out.println(total);
+                    System.out.println(fileLength);
+                    // publishing the progress....
+                    if (fileLength > 0) // only if total length is known
+                        publishProgress((int) (total * 100 / fileLength));
+                }
                 Log.d(TAG, "[+] Success downloading thumbnail");
                 Log.d(TAG, "[+] " + output.toString());
                 Bitmap bitmap = BitmapFactory.decodeStream(output);
-                System.out.println(bitmap);
                 String basePath = uri.getPath();
-                Log.d(TAG, "[+] Bitmap " + bitmap.toString());
 
                 saveBitmap(context, uri, basePath, key, bitmap, false);
             } catch (Exception e) {
@@ -238,6 +279,36 @@ public class FileDownloadProvider extends FileProvider {
                 Log.e(TAG, e.toString());
             }
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            System.out.println("Download is finished");
+            mBuilder.setContentText("Download completed")
+                    .setProgress(0,0,false);
+            mNotifyManager.notify(id, mBuilder.build());
+        }
+
+        private void publishProgress(int progress) {
+            System.out.println("Update progress");
+            mBuilder.setProgress(100, progress, false);
+            mNotifyManager.notify(id, mBuilder.build());
+
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        public String createNotificationChannel(Context context) {
+            String channelId = "DownloadNotification_1";
+            String channelName = "DownloadNotification";
+            int channelImportance = NotificationManager.IMPORTANCE_LOW;
+            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, channelImportance);
+            notificationChannel.setDescription("Download");
+            notificationChannel.enableVibration(false);
+            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+
+            return channelId;
         }
 
     }

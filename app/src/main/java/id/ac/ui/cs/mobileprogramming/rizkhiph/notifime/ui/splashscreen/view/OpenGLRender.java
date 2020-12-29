@@ -1,21 +1,11 @@
 package id.ac.ui.cs.mobileprogramming.rizkhiph.notifime.ui.splashscreen.view;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
-import android.opengl.GLU;
-import android.opengl.GLUtils;
 import android.renderscript.Float3;
 import android.renderscript.Matrix4f;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;

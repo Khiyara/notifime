@@ -141,7 +141,6 @@ public class ShaderProgram {
     private int fetchAttributeLocation(String name) {
         if (attributes.containsKey(name)) {
             int location = attributes.get(name);
-            System.out.println(location);
             if(location == -1) {
                 location = GLES20.glGetAttribLocation(programHandle, name);
                 if(location != -1) {
